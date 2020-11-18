@@ -89,7 +89,7 @@ cln_inc %>%
 cln_mort <- na.omit(cln_mort)
 cln_inc <- na.omit(cln_inc)
 
-cln_mort <- subset(cln_mort, cln_mort$CRUDE_RATE < 50)
+cln_mort <- subset(cln_mort, cln_mort$CRUDE_RATE < 100)
 
 
 
