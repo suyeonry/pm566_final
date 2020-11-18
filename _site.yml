@@ -5,10 +5,14 @@ navbar:
   left:
     - text : "Home"
     - href : index.html
-  right:
+    - text : "Download the report"
+    - href : PM566_finalproject.pdf
+    - text : "Download the source code.txt"
+    - href : sourcecode.txt
+    right:
     - text: "Author"
     - href: https://www.linkedin.com/in/sue-suyeon-ryu-1a6315a3/
 output:
   html_document:
     theme: cosmo
-    css: styles.css
+  
