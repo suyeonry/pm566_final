@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Suyeon Ryu" />
+
+
+<title>PM566 Final project</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Suyeon Ryu PM566 Final Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown-header">Home</li>
+<li>
+  <a href="index.html"></a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown-header">Author</li>
+<li>
+  <a href="https://www.linkedin.com/in/sue-suyeon-ryu-1a6315a3/"></a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">PM566 Final project</h1>
+<h4 class="author">Suyeon Ryu</h4>
+<h4 class="date">2020 11 17</h4>
+
+</div>
+
+
+<p><code>{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE)</code></p>
+<div id="comparison-in-u.s.-colon-cancer-rates-between-east-coast-and-west-coast" class="section level1">
+<h1><strong>Comparison in U.S. Colon Cancer Rates between East Coast and West Coast</strong></h1>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Colorectal cancer was known to have low prevalence rates compared to other types of cancers in U.S. history. In the recent years, however, it was discussed that the proportion of colorectal cancer in U.S. populations has increased. More importantly and interestingly, the incidence and mortality are thought to be different from West Coast to East Coast with unknown causes. This paper will discuss and compare the incidence and mortality rates of colon cancers in U.S. population. Specifically, 3 states representing the West Coast are compared to 7 states representing the East Coast, through the data exploration analyses.</p>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<div id="data-sources" class="section level2">
+<h2>Data Sources</h2>
+<div id="cancer-incidence-mortality-data" class="section level3">
+<h3>Cancer Incidence / Mortality Data</h3>
+<p>Data on cancer incidences/mortalities during 1999 through 2017 were obtained from the United States Cancer Statistics(USCS) data provided by the Centers for Disease Control and Prevention’s National Center for Health Statistics(NCHS). As our focus is specifically colorectal cancers, all other data were omitted from the data set. Then, due to the limited computing power, the 1 in every 20 data was used to perform the data exploratory analysis using R version 3.6.0. Any outliers were assessed from the scatter-plot, and was computationally removed from the data set for the further analyses. No statistical computations were performed in this report.</p>
+</div>
+<div id="selection-of-west-coast-and-east-coast" class="section level3">
+<h3>Selection of West Coast and East Coast</h3>
+<p>Based on the U.S. map, three reprensentative states that have coast line of Pacific ocean were chosen, which are California, Washington, and Oregon. With the same method, seven representative states that have coast line of Atlantic ocean were chosen, which are New York, Pennsylvania, NewJersey, Virginia, North and South Carolina, and Georgia. To diminish the possible bias coming from the latitutde, Florida was exlcuded.</p>
+</div>
+<div id="demographic-characteristics" class="section level3">
+<h3>Demographic characteristics</h3>
+<p>The data were collected from all sex, racial/ethnic groups, and age(all ages from &lt;1 to 85+). The data collected for Incidence data from NPCR and SEER registries in 49 states cover approximately 98% of U.S. Population. For Mortality data, 100% of U.S. population was covered. For purposes of brevity, in this report, only colon and rectum cancer related information is regarded.</p>
+<p>```{r,echo=FALSE, include=FALSE} library(tidyverse) library(ggplot2) library(data.table) library(dplyr) library(plotly) library(DT)</p>
+<p>midt&lt;- data.table::fread(“C:/Users/suyeo/PM566/midterm/data/BYAREA.txt”)</p>
+<p>cln &lt;- midt[midt$SITE == “Colon and Rectum”]</p>
+<p>cln_mort &lt;- cln[cln$EVENT_TYPE == “Mortality”] cln_inc &lt;- cln[cln$EVENT_TYPE == “Incidence”]</p>
+</div>
+</div>
+</div>
+<div id="noticed-some-rates-are-still-characters.-in-order-to-plot-need-to-change-to-numeric" class="section level1">
+<h1>Noticed some rates are still characters. In order to plot, need to change to numeric!</h1>
+<p>cln_mort &lt;- cln_mort %&gt;% mutate( CRUDE_RATE = as.numeric(CRUDE_RATE), YEAR = as.numeric(YEAR), AGE_ADJUSTED_RATE = as.numeric(AGE_ADJUSTED_RATE), )</p>
+<p>cln_inc &lt;- cln_inc %&gt;% mutate( CRUDE_RATE = as.numeric(CRUDE_RATE), YEAR = as.numeric(YEAR), AGE_ADJUSTED_RATE = as.numeric(AGE_ADJUSTED_RATE), )</p>
+</div>
+<div id="checking-and-removing-missing-values" class="section level1">
+<h1>checking and removing missing values</h1>
+<p>cln_mort %&gt;% select(everything()) %&gt;% summarise_all(funs(sum(is.na(.))))</p>
+<p>cln_inc %&gt;% select(everything()) %&gt;% summarise_all(funs(sum(is.na(.))))</p>
+<p>cln_mort &lt;- na.omit(cln_mort) cln_inc &lt;- na.omit(cln_inc)</p>
+<p>cln_mort &lt;- subset(cln_mort, cln_mort$CRUDE_RATE &lt; 50)</p>
+<pre><code>
+
+
+
+
+```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE}
+
+
+# trimming down (subsetting) the data because it is too big
+
+cln_inc &lt;- cln_inc %&gt;% slice(seq(1, n(), by = 20))
+cln_mort &lt;-  cln_mort %&gt;% slice(seq(1, n(), by = 20))</code></pre>
+<p>```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE}</p>
+</div>
+<div id="incidence-rate-table" class="section level1">
+<h1>Incidence rate table</h1>
+<p>c99&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==1999]) c00&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2000]) c01&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2001]) c02&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2002]) c03&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2003]) c04&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2004]) c05&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2005]) c06&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2006]) c07&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2007]) c08&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2008]) c09&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2009]) c10&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2010]) c11&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2011]) c12&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2012]) c13&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2013]) c14&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2014]) c15&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2015]) c16&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2016]) c17&lt;-summary(cln_inc<span class="math inline">\(CRUDE_RATE[cln_inc\)</span>YEAR==2017])</p>
+<p>table1&lt;-rbind(c99,c00,c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,c11,c12,c13,c14,c15,c16,c17) inc_median &lt;- table1[,3] inc_std &lt;- table1[,5]-table1[,2] inc_mean &lt;- table1[,4]</p>
+<p>inc_median &lt;- round(inc_median, digits=1) inc_std &lt;- round(inc_std, digits=2) inc_mean &lt;- round(inc_mean, digits=2)</p>
+<p>rnames&lt;-c(‘1999’,‘2000’,‘2001’,‘2002’,‘2003’,‘2004’,‘2005’,‘2006’,‘2007’,‘2008’,‘2009’,‘2010’,‘2011’,‘2012’,‘2013’,‘2014’,‘2015’,‘2016’,‘2017’) cnames &lt;- c(“YEAR”,“Median Rate”,“S.D.”,“Mean”)</p>
+<p>inc_table &lt;- cbind(rnames, inc_median, inc_std, inc_mean) inc_table &lt;- knitr::kable(inc_table,row.names=FALSE, col.names=cnames,caption = “TABLE 1. U.S. Colon Cancer Incidence Rate History”,align = “cccc”)</p>
+<p>inc_table</p>
+<pre><code>
+
+
+```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE}
+
+## Mortality Table 
+
+c99&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==1999])
+c00&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2000])
+c01&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2001])
+c02&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2002])
+c03&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2003])
+c04&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2004])
+c05&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2005])
+c06&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2006])
+c07&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2007])
+c08&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2008])
+c09&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2009])
+c10&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2010])
+c11&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2011])
+c12&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2012])
+c13&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2013])
+c14&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2014])
+c15&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2015])
+c16&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2016])
+c17&lt;-summary(cln_mort$CRUDE_RATE[cln_mort$YEAR==2017])
+
+
+table1&lt;-rbind(c99,c00,c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,c11,c12,c13,c14,c15,c16,c17)
+mort_median &lt;- table1[,3]
+mort_std &lt;- table1[,5]-table1[,2]
+mort_mean &lt;- table1[,4]
+
+mort_median &lt;- round(mort_median, digits=1)
+mort_std &lt;- round(mort_std, digits=2)
+mort_mean &lt;- round(mort_mean, digits=2)
+
+
+rnames&lt;-c(&#39;1999&#39;,&#39;2000&#39;,&#39;2001&#39;,&#39;2002&#39;,&#39;2003&#39;,&#39;2004&#39;,&#39;2005&#39;,&#39;2006&#39;,&#39;2007&#39;,&#39;2008&#39;,&#39;2009&#39;,&#39;2010&#39;,&#39;2011&#39;,&#39;2012&#39;,&#39;2013&#39;,&#39;2014&#39;,&#39;2015&#39;,&#39;2016&#39;,&#39;2017&#39;)
+cnames &lt;- c(&quot;YEAR&quot;,&quot;Median Rate&quot;,&quot;S.D.&quot;,&quot;Mean&quot;)
+
+mort_table &lt;- cbind(rnames, mort_median, mort_std, mort_mean)
+mort_table &lt;- knitr::kable(mort_table,row.names=FALSE, col.names=cnames,caption = &quot;TABLE 2. U.S. Colon Cancer Mortality Rate History&quot;,align = &quot;cccc&quot;)
+
+mort_table
+
+
+</code></pre>
+</div>
+<div id="preliminary-results" class="section level1">
+<h1>Preliminary Results</h1>
+<div id="colorectal-cancer-incidence-and-mortality-rates-and-trends" class="section level2">
+<h2>Colorectal Cancer Incidence and Mortality Rates and Trends</h2>
+<p>Overall, the trends in colorectal cancer incidence rate shows decreasing trend over the period of 18 years (1999 to 2017). The rate decreasing slope was steeper until early 2000, then shows stabilizing trend from 2007 to 2017 (Figure 1-2). Regardless, the overall mortality from colon cancer in U.S. maintained around same rate over 17 years, without showing particularly decreasing trends (Figure 2-2).</p>
+<p>```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE} cln_inc %&gt;% plot_ly(x = ~YEAR, y = ~CRUDE_RATE, type = ‘scatter’, mode = ‘markers’, color = ~AREA, colors = “Blues”, size = ~CRUDE_RATE) %&gt;% layout(title=“FIGURE 1. Interactive Overall U.S. Colorectal Cancer INCIDENCE rate (1999 to 2017)”)</p>
+<p>cln_mort %&gt;% plot_ly(x = ~YEAR, y = ~CRUDE_RATE, type = ‘scatter’, mode = ‘markers’, color = ~AREA, colors = “Reds”, size = ~CRUDE_RATE) %&gt;% layout(title=“FIGURE 2. Interactive Overall U.S. Colorectal Cancer MORTALITY rate (1999 to 2017)”)</p>
+<pre><code>
+
+
+```{r, include = TRUE,echo=FALSE, warning=FALSE, message = FALSE}
+
+# Trend of colon cancer incidence and mortality over the years (maybe line graph)
+
+ggplot(cln_inc, aes(x=YEAR, y=CRUDE_RATE))+
+  geom_point(color=&quot;grey&quot;)+
+  theme_minimal()+
+  geom_smooth(method=&quot;loess&quot;, color = &quot;blue&quot;, fill=&quot;darkblue&quot;)+
+  ggtitle(&quot;FIGURE 1-2.Trend in Overall U.S. Colon Cancer Incidence Crude Rate&quot;)
+
+ggplot(cln_mort, aes(x=YEAR, y=CRUDE_RATE))+
+  geom_point(color=&quot;grey&quot;)+
+  theme_minimal()+
+  geom_smooth(method=&quot;loess&quot;, color=&quot;red&quot;, fill=&quot;darkred&quot;)+
+  ggtitle(&quot;FIGURE 2-2. Trend in Overall U.S. Colon Cancer Mortality Crude Rate&quot;)
+
+</code></pre>
+</div>
+<div id="comparison-of-colon-cancer-incidence-rates-between-east-and-west" class="section level2">
+<h2>Comparison of Colon Cancer Incidence Rates between EAST and WEST</h2>
+<p>To ease the understanding of the geographical representation of each coast, the states which colon cancer data were collected from were highlighted (FIGURE 3). The bar graph of colorectal cancer incidence rates of each coast as well as the un-considered areas by year were plotted(FIGURE 4). Then, to aid the comparison of incidence rate over the years, the scatterplot of each coasts with regression lines were plotted (FIGURE 5). Based on the comparison scatterplot with regression lines, it is apparent that the incidence rates are decreasing over the years, but the rate of decreasing is slower for the West Coast compared to the East Coast.</p>
+<p>```{r,include=TRUE,echo=FALSE, warning=FALSE, message = FALSE} ### INTERACTIVE MAP for Considered States and Their Mortality Rates # Get state abbreviations and map to state names</p>
+<p>cln_mort<span class="math inline">\(code &lt;- ifelse(cln_mort\)</span>AREA == “New York”, “NY”, ifelse(cln_mort<span class="math inline">\(AREA==&quot;Pennsylvania&quot;, &quot;PA&quot;,  ifelse(cln_mort\)</span>AREA ==“New Jersey”, “NJ”, ifelse(cln_mort<span class="math inline">\(AREA == &quot;Virginia&quot;, &quot;VA&quot;,  ifelse(cln_mort\)</span>AREA == “North Carolina”, “NC”, ifelse(cln_mort<span class="math inline">\(AREA == &quot;South Carolina&quot;, &quot;SC&quot;,  ifelse(cln_mort\)</span>AREA == “Georgia”,“GA”, ifelse(cln_mort<span class="math inline">\(AREA == &quot;Washington&quot;,&quot;WA&quot;,  ifelse(cln_mort\)</span>AREA == “Oregon”,“OR”, ifelse(cln_mort$AREA == “California”,“CA”,“.”))))))))))</p>
+<p>df &lt;- cln_mort %&gt;% select(code, POPULATION, CRUDE_RATE, AGE_ADJUSTED_RATE) # select data df &lt;- subset(df, df$AGE_ADJUSTED_RATE &lt; 100)</p>
+<p>df<span class="math inline">\(hover &lt;- with(df, paste(df\)</span>code, ‘<br>’,df<span class="math inline">\(AGE_ADJUSTED_RATE,&#39;&lt;br&gt;&#39;, &quot;Age adjusted rate&quot;,&#39;&lt;br&gt;&#39;,df\)</span>CRUDE_RATE,‘<br>’, “Crude rate”, ‘<br>’,df$POPULATION,‘<br>’,“Population”))</p>
+</div>
+</div>
+<div id="give-state-boundaries-a-white-border" class="section level1">
+<h1>give state boundaries a white border</h1>
+<p>l &lt;- list(color = toRGB(“white”), width = 2) # specify some map projection/options g &lt;- list( scope = ‘usa’, projection = list(type = ‘albers usa’), showlakes = TRUE, lakecolor = toRGB(‘white’) )</p>
+<p>fig &lt;- plot_geo(df, locationmode = ‘USA-states’) fig &lt;- fig %&gt;% add_trace( z = ~df<span class="math inline">\(AGE_ADJUSTED_RATE, text = ~hover, locations = ~code,  color = ~df\)</span>AGE_ADJUSTED_RATE, colors = “Spectral” ) fig &lt;- fig %&gt;% colorbar(title = “Age adjusted rate(per 100k population)”) fig &lt;- fig %&gt;% layout( title = ‘U.S.Colorectal Cancer Mortality Comparison Study : Considered States <br>(Hover for breakdown)’, geo = g )</p>
+<p>fig</p>
+<pre><code>
+
+
+```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE}
+#EAST versus WEST
+
+#EAST will include New York, Pennsylvania, New Jersey, Virginia, North and South Carolina, Georgia
+#WEST will include Washington, Oregon, California
+
+us_map &lt;- map_data(&quot;state&quot;)
+
+east_states &lt;- c(&quot;new york&quot;, &quot;pennsylvania&quot;,&quot;new jersey&quot;,&quot;virginia&quot;,&quot;north carolina&quot;,&quot;south carolina&quot;,&quot;georgia&quot;)
+west_states &lt;- c(&quot;washington&quot;,&quot;oregon&quot;,&quot;california&quot;)
+
+ggplot(us_map, aes(x=long, y=lat, group = group)) +
+  geom_polygon(fill=&quot;grey&quot;, colour = &quot;white&quot;) +
+  geom_polygon(fill=&quot;palevioletred1&quot;, data = filter(us_map, region %in% east_states)) +
+  geom_polygon(fill=&quot;mediumpurple&quot;, data = filter(us_map, region %in% west_states))+
+  ggtitle(&quot;FIGURE 3. U.S Colorectal Cancer Comparison Covered Area East versus West&quot;)
+
+</code></pre>
+<div id="colorectal-cancer-incidence-crude-rates" class="section level3">
+<h3>Colorectal Cancer Incidence <strong>Crude</strong> Rates</h3>
+<p>```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE} #make new variables for east and west states</p>
+<p>cln_inc<span class="math inline">\(westeast &lt;- ifelse(cln_inc\)</span>AREA == “New York”|cln_inc<span class="math inline">\(AREA == &quot;Pennsylvania&quot;|cln_inc\)</span>AREA == “New Jersey”|cln_inc<span class="math inline">\(AREA == &quot;Virginia&quot;|cln_inc\)</span>AREA == “North Carolina”|cln_inc<span class="math inline">\(AREA == &quot;South Carolina&quot;|cln_inc\)</span>AREA == “Georgia”, “East Coast”, ifelse(cln_inc<span class="math inline">\(AREA ==&quot;Washington&quot;|cln_inc\)</span>AREA ==“Oregon”|cln_inc$AREA == “California”, “West Coast”,“Not Considered” ))</p>
+<p>#plotting bargraph of crude rate including “non considering area” p &lt;- ggplot(data=cln_inc, aes(x=YEAR, y=CRUDE_RATE, fill=westeast))+ geom_bar(stat=“identity”, color=“black”, position=position_dodge())+ scale_fill_manual(values=c(“palevioletred1”,“#999999”,“mediumpurple”))+ theme_minimal()+ ggtitle(“FIGURE 4. U.S. Colorectal Cancer Incidence Crude Rate by Areas”)</p>
+<p>p</p>
+<p>#excluding not considered area from the data set</p>
+<p>cln3 &lt;-cln_inc[!(cln_inc$westeast==“Not Considered”),]</p>
+<p>#plotting scatterplot of crude rate east versus west</p>
+<p>ggplot(data=cln3, aes(x=YEAR, y=CRUDE_RATE, color=westeast, shape=westeast)) + geom_point() + geom_smooth(method=lm, se=TRUE, fullrange=TRUE)+ scale_shape_manual(values=c(3, 17))+ scale_color_manual(values=c(“palevioletred1”,“mediumpurple”))+ scale_size_manual(values=c(7,7))+ theme(legend.position=“right”)+ ggtitle(“FIGURE 5. U.S. Colon Cancer Incidence Crude Rate West Coast vs. East Coast”)</p>
+<pre><code>
+
+
+### Colorectal Cancer Incidence **Age-adjusted** Rates
+
+Because the data is covering fairly large spectrum of age(&lt;1 to 85+), the age-adjusted data were used to plot the graphs of colorectal cancer incidence rates. The unconsidered areas were excluded from the data set. With the age-adjusted crude rate, not only the West Coast show the higher incidence rate over all years covered, but also it was more apparent that the incidence decreasing trend is significantly slower for the West Coast area (FIGURE 6).
+
+```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE}
+
+#removing outlier
+cln4 &lt;- subset(cln3, cln3$AGE_ADJUSTED_RATE &lt; 130)
+
+
+ggplot(data=cln4, aes(x=YEAR, y=AGE_ADJUSTED_RATE, color=westeast, shape=westeast)) +
+  geom_point() + 
+  geom_smooth(method=lm, se=TRUE, fullrange=TRUE)+
+  scale_shape_manual(values=c(3, 17))+ 
+  scale_color_manual(values=c(&quot;palevioletred1&quot;,&quot;mediumpurple&quot;))+
+  scale_size_manual(values=c(7,7))+
+  theme(legend.position=&quot;right&quot;)+
+  ggtitle(&quot;FIGURE 6. U.S. Colon Cancer AGE Adjusted Rate West Coast vs. East Coast&quot;)
+
+
+</code></pre>
+</div>
+<div id="comparison-of-colon-cancer-mortality-rates-between-east-and-west" class="section level2">
+<h2>Comparison of Colon Cancer Mortality Rates between EAST and WEST</h2>
+<div id="colorectal-cancer-mortality-crude-rates" class="section level3">
+<h3>Colorectal Cancer Mortality <strong>Crude</strong> Rates</h3>
+<p>The U.S. colorectal cancer mortality rates were compared between West and East coasts through exploratory data analysis. From the regression line from the scatterplot(FIGURE 7), the slope of the West Coast mortality rate is positive; that is, the colon cancer mortality rate in the west coast area were increasing over the 17 years. East coast colorectal mortality rates show decreasing trend. Again, as the age range is big, the age-adjusted rates were compared to minimize potential bias within the data(FIGURE 8). With age-adjusted colorectal mortality data, both area’s mortality rates show decreasing trends. However, the decreasing slopes are noticeably different; the West Coast decreasing trend is way slower.</p>
+<p>```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE} # Do the same with mortality</p>
+<p>cln_mort<span class="math inline">\(westeast &lt;- ifelse(cln_mort\)</span>AREA == “New York”|cln_mort<span class="math inline">\(AREA == &quot;Pennsylvania&quot;|cln_mort\)</span>AREA == “New Jersey”|cln_mort<span class="math inline">\(AREA == &quot;Virginia&quot;|cln_mort\)</span>AREA == “North Carolina”|cln_mort<span class="math inline">\(AREA == &quot;South Carolina&quot;|cln_mort\)</span>AREA == “Georgia”, “East Coast”, ifelse(cln_mort<span class="math inline">\(AREA ==&quot;Washington&quot;|cln_mort\)</span>AREA ==“Oregon”|cln_mort$AREA == “California”, “West Coast”,“Not Considered” ))</p>
+<p>#excluding not considered area from the data set</p>
+<p>mort3 &lt;-cln_mort[!(cln_mort$westeast==“Not Considered”),]</p>
+<p>#plotting scatterplot of crude rate east versus west</p>
+<p>ggplot(data=mort3, aes(x=YEAR, y=CRUDE_RATE, color=westeast, shape=westeast)) + geom_point() + geom_smooth(method=lm, se=TRUE, fullrange=TRUE)+ scale_shape_manual(values=c(3, 17))+ scale_color_manual(values=c(“palevioletred1”,“mediumpurple”))+ scale_size_manual(values=c(7,7))+ theme(legend.position=“right”)+ ggtitle(“FIGURE 7. U.S. Colon Cancer Mortality Crude Rate West Coast vs. East Coast”)</p>
+<p>ggplot(data=mort3, aes(x=YEAR, y=AGE_ADJUSTED_RATE, color=westeast, shape=westeast)) + geom_point() + geom_smooth(method=lm, se=TRUE, fullrange=TRUE)+ scale_shape_manual(values=c(3, 17))+ scale_color_manual(values=c(“palevioletred1”,“mediumpurple”))+ scale_size_manual(values=c(7,7))+ theme(legend.position=“right”)+ ggtitle(“FIGURE 8. U.S. Colon Cancer AGE Adjusted Mortality Rate West Coast vs. East Coast”)</p>
+<p>```</p>
+</div>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>In this paper, colorectal cancer incidence rates and mortality rates were compared in two opposite sides of U.S., West coast including 3 states facing Pacific ocean, and East coast including 7 states facing Atlantic ocean. Both rates were evidently decreasing over the 18 years covered by the dataset. However, the speed of decreasing is noticeably different between two areas, as suggested by many colorectal oncology surgeons. This finding may serve as the starting point of interesting pathway to researches intending to find the causes, and it may lead to potential preventive measure development for colorectal cancers.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
