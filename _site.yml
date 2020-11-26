@@ -5,14 +5,16 @@ navbar:
   left:
     - text : "Home"
     - href : index.html
-    - text : "pdf download"
-    - href : PM566_finalproject.pdf
+    - text : "PDF download"
+    - href : PM566_final_project.pdf
+    - text : "Dataset Link"
+    - href : https://www.cdc.gov/cancer/uscs/dataviz/download_data.htm
   right:
-    - text : "Author"
+    - text : "Contact Author"
     - href : https://www.linkedin.com/in/sue-suyeon-ryu-1a6315a3/
 output:
   html_document:
-    theme: cosmo
+    theme: paper
     css: styles.css
     
   
