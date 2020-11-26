@@ -4,3 +4,4 @@ The website address : https://suyeonry.github.io/pm566_final
 
 This page features some interactive figures and tables for comparison in U.S. colon cancer rates between East and West coast. 
 
+Data could be found under downloadable link (It was too big to be added)
