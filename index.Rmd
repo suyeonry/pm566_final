@@ -3,8 +3,6 @@ title: "Comparison in U.S. Colon Cancer Rates bewteen East and West Coast"
 author: "Suyeon Ryu"
 date: "2020 11 25"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
     toc_float: yes
