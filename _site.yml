@@ -1,7 +1,7 @@
 name: "Suyeon Ryu's website"
 output_dir: "."
 navbar:
-  title: "Suyeon Ryu PM566 Final Website"
+  title: "U.S. Colon Incidence/Mortality Comparison"
   left:
     - text : "Home"
     - href : index.html
