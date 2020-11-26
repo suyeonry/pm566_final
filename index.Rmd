@@ -89,7 +89,7 @@ cln_inc %>%
 cln_mort <- na.omit(cln_mort)
 cln_inc <- na.omit(cln_inc)
 
-cln_mort <- subset(cln_mort, cln_mort$CRUDE_RATE < 100)
+###################
 
 
 
@@ -104,8 +104,8 @@ cln_mort <- subset(cln_mort, cln_mort$CRUDE_RATE < 100)
 
 # trimming down (subsetting) the data because it is too big
 
-cln_inc <- cln_inc %>% slice(seq(1, n(), by = 20))
-cln_mort <-  cln_mort %>% slice(seq(1, n(), by = 20))
+cln_inc <- cln_inc %>% slice(seq(1, n(), by = 5))
+cln_mort <-  cln_mort %>% slice(seq(1, n(), by = 5))
 ```
 
 
@@ -226,6 +226,8 @@ Overall, the trends in colorectal cancer incidence rate shows decreasing trend o
 
 
 ```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE}
+cln_mort <- subset(cln_mort, cln_mort$CRUDE_RATE < 50)
+
 cln_inc %>%
   plot_ly(x = ~YEAR, y = ~CRUDE_RATE,
           type = 'scatter',
@@ -406,7 +408,7 @@ Because the data is covering fairly large spectrum of age(<1 to 85+), the age-ad
 ```{r, include=TRUE,echo=FALSE, warning=FALSE, message = FALSE}
 
 #removing outlier
-cln4 <- subset(cln3, cln3$AGE_ADJUSTED_RATE < 130)
+cln4 <- subset(cln3, cln3$AGE_ADJUSTED_RATE < 100)
 
 
 ggplot(data=cln4, aes(x=YEAR, y=AGE_ADJUSTED_RATE, color=westeast, shape=westeast)) +
