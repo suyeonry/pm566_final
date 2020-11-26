@@ -1,0 +1,18 @@
+name: "Suyeon Ryu's website"
+output_dir: "."
+navbar:
+  title: "Suyeon Ryu PM566 Final Website"
+  left:
+    - text : "Home"
+    - href : index.html
+    - text : "pdf download"
+    - href : PM566_finalproject.pdf
+  right:
+    - text : "Author"
+    - href : https://www.linkedin.com/in/sue-suyeon-ryu-1a6315a3/
+output:
+  html_document:
+    theme: cosmo
+    css: styles.css
+    
+  
